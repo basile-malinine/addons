@@ -42,3 +42,6 @@ class Hotel(models.Model):
     def _onchange_hotelier(self):
         self.hotelier_id.is_hotelier = True
 
+    def import_test(self, msg):
+        print(msg['a'])
+

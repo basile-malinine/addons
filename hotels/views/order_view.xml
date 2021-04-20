@@ -61,17 +61,6 @@
                         </group>
                     </group>
 
-<!--                    <notebook>-->
-<!--                        <page string="Orders" name='orders' >-->
-<!--                            <field name="orders_ids" mode="tree">-->
-<!--                                <tree>-->
-<!--                                    <field name="name" width="20%"/>-->
-<!--                                    <field name="order_date" width="80%"/>-->
-<!--                                </tree>-->
-<!--                            </field>-->
-<!--                        </page>-->
-<!--                    </notebook>-->
-
                 </sheet>
             </form>
         </field>
@@ -81,9 +70,9 @@
         <field name="name">hotels.order.select</field>
         <field name="model">hotels.order</field>
         <field name="arch" type="xml">
-            <search>
-                <field name="guest_id"/>
-                <field name="hotel_id"/>
+            <search string="Order Search">
+                <field name="name" filter_domain="['|', '|', ('name', 'ilike', self), ('guest_id', 'child_of', self), ('hotel_id', 'ilike', self)]"/>
+                <filter name="order_date" string="Order Date" date="order_date"/>
             </search>
         </field>
     </record>
