@@ -5,8 +5,8 @@ class Contract(models.Model):
     _name = 'hotels.contract'
     _description = 'Contract'
 
-    name = fields.Char('Number')
-    contract_date = fields.Date('Date')
+    name = fields.Char('Number', required=True)
+    contract_date = fields.Date('Date', required=True)
     hotel_id = fields.Many2one('hotels.hotel', string='Hotel', required=True)
     commission = fields.Integer('Commission %')
     invoices_ids = fields.One2many('hotels.invoice', 'contract_id', string='Invoices')

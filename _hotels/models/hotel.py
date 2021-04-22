@@ -39,9 +39,6 @@ class Hotel(models.Model):
     company_id = fields.Many2one('res.company', default=lambda self: self.env.user.company_id.id)
     invoices_ids = fields.One2many('hotels.invoice', 'hotel_id', string='Invoices')
 
-    hz_id = fields.Integer()
-    hz_last_update = fields.Datetime()
-
     @api.onchange('hotelier_id')
     def _onchange_hotelier(self):
         self.hotelier_id.hotels_partner_type = 'type_hotelier'

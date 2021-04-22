@@ -8,8 +8,8 @@ class HotelsImport(models.TransientModel):
     _description = 'Hotels Import HZ'
 
     def import_test(self, param):
-        record_ids = self.env['hotels.contract'].search([('id', '!=', 0)])
-        names = []
-        for record in record_ids:
-            names.append(record.name)
-        return names
+        print(param['hotel']['hz_id'])
+        cnt = self.env['hotels.hotel'].search_count([('hz_id', '=', param['hotel']['hz_id'])])
+        if cnt == 0:
+            hotel_id = self.env['hotels.hotel'].create(param['hotel'])
+        return cnt
