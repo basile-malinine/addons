@@ -33,6 +33,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="commission" string="%"/>
                 <field name="num_stars"/>
                 <field name="city_id"/>
                 <field name="phone"/>
